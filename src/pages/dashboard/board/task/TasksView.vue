@@ -13,7 +13,7 @@ const route = useRoute()
 
 const stateStore = useTaskStateStore()
 const taskStore = useTaskStore()
-const { visibleStateFormModal, states } = storeToRefs(stateStore)
+const { visibleStateFormModal, states, loadData } = storeToRefs(stateStore)
 const { visibleTaskFormModal } = storeToRefs(taskStore)
 const boardId = computed(() =>
   route.params.boardId ? parseInt(route.params.boardId as string) : null
@@ -51,6 +51,9 @@ onMounted(() => {
   <div class="flex mx-4 overflow-x-auto">
     <div class="w-max flex gap-4">
       <task-state-item-component v-for="state in states" :state="state" />
+      <a-card v-if="loadData" :loading="loadData" class="w-[320px]">
+        <div class="draggable-list">-</div>
+      </a-card>
       <task-state-form-modal-component v-if="boardId" :board-id="boardId">
         <a-button
           @click="visibleStateFormModal = true"
@@ -64,4 +67,16 @@ onMounted(() => {
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.draggable-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 10vh;
+  max-height: calc(100dvh - 260px);
+  overflow-y: auto;
+}
+.draggable-list > div {
+  cursor: pointer;
+}
+</style>

@@ -10,7 +10,7 @@ const props = defineProps<{
 }>()
 
 const taskStore = useTaskStore()
-const { form, visibleTaskFormModal } = storeToRefs(taskStore)
+const { form, visibleTaskFormModal, loading } = storeToRefs(taskStore)
 const formRef = ref()
 function handleSubmit() {
   formRef.value
@@ -29,6 +29,7 @@ function handleSubmit() {
     v-model:open="visibleTaskFormModal"
     title="Create new board"
     ok-text="Save"
+    :ok-button-props="{ loading }"
     :closable="false"
     centered
   >

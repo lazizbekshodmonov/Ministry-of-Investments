@@ -9,6 +9,8 @@ export interface IStateForm {
 }
 export interface IStateState {
   states: IState[]
+  loading: boolean
+  loadData: boolean
   form: IStateForm
   visibleStateFormModal: boolean
 }

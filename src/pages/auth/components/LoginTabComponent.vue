@@ -3,7 +3,7 @@ import useAuthStore from '@/store/auth.store.ts'
 import { storeToRefs } from 'pinia'
 
 const authStore = useAuthStore()
-const { loginForm } = storeToRefs(authStore)
+const { loginForm, loading } = storeToRefs(authStore)
 </script>
 
 <template>
@@ -22,6 +22,7 @@ const { loginForm } = storeToRefs(authStore)
         </a-col>
         <a-col :span="24">
           <a-button
+            :loading="loading"
             html-type="submit"
             type="primary"
             size="large"

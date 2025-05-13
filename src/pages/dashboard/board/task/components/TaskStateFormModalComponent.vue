@@ -10,7 +10,7 @@ const props = defineProps<{
 }>()
 
 const stateStore = useTaskStateStore()
-const { form, visibleStateFormModal } = storeToRefs(stateStore)
+const { form, visibleStateFormModal, loading } = storeToRefs(stateStore)
 const formRef = ref()
 function handleSubmit() {
   form.value.boardId = props.boardId
@@ -30,6 +30,7 @@ function handleSubmit() {
     v-model:open="visibleStateFormModal"
     title="Create new state"
     ok-text="Save"
+    :ok-button-props="{ loading }"
     :closable="false"
     centered
   >

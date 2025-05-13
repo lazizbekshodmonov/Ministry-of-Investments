@@ -11,6 +11,8 @@ import {
 const useTaskStore = defineStore('task', {
   state: (): ITaskState => ({
     tasks: [],
+    loading: false,
+    loadData: false,
     form: {
       title: null,
       description: null,

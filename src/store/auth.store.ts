@@ -10,7 +10,7 @@ const { redirect } = useCore()
 const useAuthStore = defineStore('auth', {
   state: (): IAuthState => ({
     activeTab: 'login',
-    loading: true,
+    loading: false,
     registerForm: {
       username: null,
       password: null,

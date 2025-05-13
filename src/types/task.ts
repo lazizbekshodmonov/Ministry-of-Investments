@@ -14,6 +14,8 @@ export interface ITaskForm {
 }
 export interface ITaskState {
   tasks: ITask[]
+  loading: boolean
+  loadData: boolean
   form: ITaskForm
   visibleTaskFormModal: boolean
 }

@@ -13,7 +13,7 @@ const props = defineProps<{
 
 const taskStore = useTaskStore()
 
-const { tasks } = storeToRefs(taskStore)
+const { tasks, loadData } = storeToRefs(taskStore)
 const modelValue = computed(() =>
   tasks.value.filter((task) => task.stateId === props.state.id)
 )
@@ -32,6 +32,9 @@ function handleMoveTask(evt: any) {
 
 <template>
   <a-card :title="state.name" class="w-[320px]">
+    <a-card v-if="loadData">
+      <div>-</div>
+    </a-card>
     <draggable
       class="draggable-list"
       :list="modelValue"
