@@ -24,6 +24,8 @@ const useTaskStateStore = defineStore('state', {
       const state = await createState(this.form)
       if (state) {
         this.states.push(state)
+        this.form.name = null
+        this.form.boardId = null
         this.visibleStateFormModal = false
         this.loading = false
       }
