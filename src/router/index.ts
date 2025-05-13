@@ -7,7 +7,7 @@ import TasksView from '@/pages/dashboard/board/task/TasksView.vue'
 import BoardIndex from '@/pages/dashboard/board/index.vue'
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.VITE_APP_BASE_URL),
+  history: createWebHistory(),
   routes: [
     {
       path: '/',
