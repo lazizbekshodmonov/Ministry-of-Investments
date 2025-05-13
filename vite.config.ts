@@ -22,7 +22,8 @@ export default defineConfig({
     port: 3002,
     proxy: {
       '/api': {
-        target: 'http://localhost:3000',
+        // target: 'http://localhost:3000',
+        target: 'https://ministry-of-investments-backend.onrender.com',
         changeOrigin: true,
         secure: false,
         rewrite: (path) => {
