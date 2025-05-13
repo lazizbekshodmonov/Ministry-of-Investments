@@ -1,30 +1,25 @@
 <script setup lang="ts">
-import useUserStore from '@/store/user.store.ts'
-import { storeToRefs } from 'pinia'
-
-const userStore = useUserStore()
-const { user } = storeToRefs(userStore)
+import UserInfoComponent from '@/pages/dashboard/components/UserInfoComponent.vue'
+import useAuthStore from '@/store/auth.store.ts'
+const authStore = useAuthStore()
 </script>
 
 <template>
   <header>
     <nav class="px-4 py-4 bg-white">
       <a-flex justify="end">
-        <a-flex gap="8">
-          <a-avatar size="large">
-            <template #icon>
-              <img src="@/assets/images/img.png" alt="" />
+        <div>
+          <a-dropdown trigger="click">
+            <div class="cursor-pointer">
+              <user-info-component />
+            </div>
+            <template #overlay>
+              <a-menu>
+                <a-menu-item @click="authStore.logout()"> Log out </a-menu-item>
+              </a-menu>
             </template>
-          </a-avatar>
-          <div class="flex flex-col justify-center gap-1">
-            <h2 class="font-medium text-md m-0 leading-4">
-              {{ user?.fullName }}
-            </h2>
-            <span class="text-xs leading-3">
-              {{ user?.username }}
-            </span>
-          </div>
-        </a-flex>
+          </a-dropdown>
+        </div>
       </a-flex>
     </nav>
   </header>

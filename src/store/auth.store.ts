@@ -40,6 +40,10 @@ const useAuthStore = defineStore('auth', {
         redirect({ name: 'DashboardView' })
       }
       this.loading = false
+    },
+    logout() {
+      localStorage.clear()
+      window.location.replace('/')
     }
   }
 })
